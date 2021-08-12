@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './sass/main.scss';
-/* import 'antd/dist/antd.css';
-import 'icheck-material/icheck-material.css'; */
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

@@ -1,27 +1,11 @@
 @import '../../sass/abstracts/variables';
 
-/* html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-} */
-
 #root, .App {
   background-color: #F7F7F7;
 }
 
-/* .block {
-  display: block;
-}
-
-.hidden {
-  display: none;
-} */
-
-
 .survey {
-  @media #{$mq-md} {
+  /* @media #{$mq-md} {
     max-width: 640px;
     margin: auto;
   }
@@ -127,29 +111,6 @@
 
   &__button {
     margin-right: 8px;
-  }
-
-
-
-
-
-  /* .icheck-material-blue {
-    margin: 0 !important;
-    padding: 10px 0;
-    display: flex !important;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  [class*="icheck-material"] > input[type="checkbox"]:first-child:checked + label::after, [class*="icheck-material"] > input[type="checkbox"]:first-child:checked + input[type="hidden"] + label::after {
-    transform: translate(7px, -2px) rotate(45deg) !important;
-  }
-
-  [class*="icheck-material"] > input:first-child:checked + label::after, [class*="icheck-material"] > input:first-child:checked + input[type="hidden"] + label::after {
-    top: auto !important;
-  }
-
-  [class*="icheck-material"] > input:first-child + label::before, [class*="icheck-material"] > input:first-child + input[type="hidden"] + label::before {
-    border: 1.5px solid #0a86ea;
   } */
+
 }

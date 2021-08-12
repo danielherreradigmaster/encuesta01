@@ -1,10 +1,10 @@
-import Prueba01 from './pages/pru01';
+import Prueba02 from './pages/pru02';
 
 
 function App() {
   return (
     <div className="App">
-      <Prueba01 />
+      <Prueba02 />
     </div>
   );
 }
