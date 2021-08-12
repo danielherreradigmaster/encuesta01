@@ -1,11 +1,64 @@
 @import '../../sass/abstracts/variables';
 
+/*/////////////////////////////////////////////////// transition//////////////////////////////////////////////////////////////////////////// */
+.block {
+  display: block;
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; 
+  -webkit-animation: fadein 1s;
+  -o-animation: fadein 1s;
+}
+
+.flex {
+  display: flex;
+  animation: fadein 2s;
+  -moz-animation: fadein 2s; 
+  -webkit-animation: fadein 2s;
+  -o-animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
+
+
+
+
 .survey { 
   min-height: 100vh;
   background-color: #F8F5F6;
 
   &__body {
-    max-width: 720px;
     margin: 0 auto;
   }
 }
@@ -19,6 +72,16 @@
   
   &__img {
     margin-bottom: 24px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 200px;
+
+    @media #{$mq-md} {
+      width: 392px;
+    }
   }
   
   &__title {
@@ -27,6 +90,11 @@
     line-height: 28px;
     color: rgb(0, 0, 0);
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
+
+    @media #{$mq-md} {
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
   
   &__description {
@@ -35,12 +103,31 @@
     line-height: 24px;
     color: #545E6B;
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    margin-bottom: 72px;
+
+    @media #{$mq-md} {
+      font-size: 20px;
+      line-height: 28px;
+      width: 720px;
+    }
   }
 }
 
 .personal-data {
+
+  @media #{$mq-md} {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100vh;
+  }
+
   &__container-img {
     height: 223.92px;
+
+    @media #{$mq-md} {
+      width: 100%;
+      height: auto;
+    }
   }
 
   &__img {
@@ -52,7 +139,15 @@
   }
 
   &__container {
-    padding: 24px 40px 72px;
+    /* padding: 24px 40px 72px; */
+    padding: 8px 40px 72px;
+
+    @media #{$mq-md} {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 
   &__title {
@@ -71,6 +166,71 @@
     text-align: left;    
   }
 }
+
+.control-input {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+  color: #7fa0e6;
+  margin-bottom: 20px;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    border: none;
+    background: #F8F5F6;
+    color: rgb(1, 66, 172);
+    font-size: 18px;
+  }
+
+  &__label {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid #7fa0e6;    
+  }
+
+  &__label::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid rgb(1, 66, 172);
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
+
+  &__content-name {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-bottom: 1px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+  }
+
+  &__input:focus {
+    outline: none;
+  }
+  &__input:focus + &__label &__content-name,
+  &__input:valid + &__label &__content-name {
+    transform: translateY(-150%);
+    font-size: 14px;
+    left: 0px;
+    color: #7fa0e6;
+  }
+  &__input:focus + &__label::after,
+  &__input:valid + &__label::after {
+    transform: translateX(0%);
+  }
+}
+
 
 .evaluation-start {
   min-height: 100vh;
@@ -99,7 +259,13 @@
   }
 }
 
-.question {  
+.question { 
+
+  @media #{$mq-md} {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+  
   &__container {
     padding: 48px 30px 96px;
   }
@@ -261,10 +427,9 @@
 }
 
 
-
-
-
-
+.hidden {
+  display: none;
+}
 
 
 
