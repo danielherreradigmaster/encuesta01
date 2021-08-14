@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Divider, Button, Progress, Space } from 'antd';
-import { Image } from 'antd';
+import { Alert, Button, Progress, Space } from 'antd';
 
 import LogoRimac from '../../assets/img/logo-rimac.png';
 import DatosPersonales from '../../assets/img/datos-personales.png';
@@ -36,6 +35,12 @@ const IndexPage2 = () => {
     //handleStepCompletion()
   }
 
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }, []);
+
+
   return (
     <div className="survey">
       <div  className='survey__body'>
@@ -46,7 +51,7 @@ const IndexPage2 = () => {
             <p className='welcome__description'>
               <span>Desde RIMAC queremos ser tu aliado en la Gestión de Riesgos Empresarial - ERM. Con esta encuesta podrás conocer el Nivel de Madurez de tu empresa. Esta herramienta se encuentra basada en el Modelo de Madurez de Riesgo elaborado por Risk and Insurance Management Society, Inc. - RIMS.</span>
               <br/><br/>
-              <span>Tu respuesta/opinión es muy valiosa y con ella podremos construir nuevos servicios para tu organización.</span>
+              <span>Tu respuesta es muy valiosa y con ella podremos brindarte servicios acorde a tus necesidades.</span>
               <br/>
               <span>Gracias.</span>
             </p>
@@ -61,7 +66,18 @@ const IndexPage2 = () => {
               <div className='personal-data__container'>
                 <h4 className='personal-data__title'>Datos Personales</h4>
                 <p className='personal-data__description'>En Rimac velamos por proteger la información de nuestros clientes, respetando la confidencialidad de sus datos. Ten por seguro que la información reunida será únicamente utilizada para mejorar nuestros servicios en Gestión de Riesgos:​</p>         
-                {/* checkbox */}
+                
+                
+                <div className="control-checkbox">
+                  <input className='control-checkbox__checkbox' id="checkboxName1" type="checkbox"/>
+                  <label className='control-checkbox__label' htmlFor="checkboxName1">He leído y acepto los términos y condiciones de uso He leído y acepto los términos y condiciones de uso He leído y acepto los términos y condiciones de uso</label>
+                </div>
+                <div className="control-checkbox">
+                  <input className='control-checkbox__checkbox' id="checkboxName2" type="checkbox"/>
+                  <label className='control-checkbox__label' htmlFor="checkboxName2">He leído y acepto los términos y condiciones de uso</label>
+                </div>
+
+
               </div>
             </div>
           )}
@@ -113,78 +129,22 @@ const IndexPage2 = () => {
             </div>
           )}
           {formStep >= 4 && (
-            <div className={`${formStep === 4 ? "block" : "hidden"} personal-data`}>
-              <div className='personal-data__container-img'>
-                <img className='personal-data__img' src={DatosPersonales} alt=''/>
-              </div>
-              <div className='personal-data__container'>
-
-                <div className="control-input">
-                  <input className='control-input__input' type="text" id='email2' name="email2" autoComplete="off" required/>
-                  <label htmlFor="email2" className="control-input__label">
-                    <span className="control-input__content-name">
-                      Correo electrónico
-                    </span>
-                  </label>
-                </div>
-
-                <div className="control-input">
-                  <input className='control-input__input' type="text" id='fullname2' name="fullname2" autoComplete="off" required/>
-                  <label htmlFor="fullname2" className="control-input__label">
-                    <span className="control-input__content-name">
-                      Nombres y Apellidos
-                    </span>
-                  </label>
-                </div>
-
-              </div>
-            </div>
-          )}
-          {formStep >= 5 && (
-            <div className={`${formStep === 5 ? "block" : "hidden"} personal-data`}>
-              <div className='personal-data__container-img'>
-                <img className='personal-data__img' src={DatosPersonales} alt=''/>
-              </div>
-              <div className='personal-data__container'>
-                
-                <div className="control-input">
-                  <input className='control-input__input' type="text" id='company2' name="company2" autoComplete="off" required/>
-                  <label htmlFor="company2" className="control-input__label">
-                    <span className="control-input__content-name">
-                      Empresa 
-                    </span>
-                  </label>
-                </div>
-
-                <div className="control-input">
-                  <input className='control-input__input' type="text" id='position2' name="position2" autoComplete="off" required/>
-                  <label htmlFor="position2" className="control-input__label">
-                    <span className="control-input__content-name">
-                      Cargo
-                    </span>
-                  </label>
-                </div>
-
-              </div>
-            </div>
-          )}
-          {formStep >= 6 && (
-            <div className={`${formStep === 6 ? "flex" : "hidden"} evaluation-start`}>
+            <div className={`${formStep === 4 ? "flex" : "hidden"} evaluation-start`}>
               <div className='evaluation-start__content'>
                 <h1 className='evaluation-start__title'>Evaluación del nivel de madurez</h1>
                 <p className='evaluation-start__description'>A continuación te presentamos 7 preguntas para que puedas conocer tu nivel de madurez según la Metodología de RIMS.</p>
               </div>
             </div>
           )}
-          {formStep >= 7 && (
-            <div className={`${formStep === 7 ? "block" : "hidden"} question`}>
+          {formStep >= 5 && (
+            <div className={`${formStep === 5 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>1. Adopción de una Gestión de Riesgos Empresarial​</h4>
+                  <Alert className='question__header-title1' message="1. Adopción de una Gestión de Riesgos Empresarial" type="error" />
                   <p className='question__header-content'>Este atributo mide la cultura de riesgos de la organización y considera el grado de apoyo a nivel ejecutivo o de la alta dirección para la gestión de riesgos empresariales (ERM, por las siglas en inglés de Enterprise Risk Management).​</p>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId11" name="someGroupName1"  />
@@ -215,8 +175,8 @@ const IndexPage2 = () => {
               </div>
             </div>
           )}
-          {formStep >= 8 && (
-            <div className={`${formStep === 8 ? "block" : "hidden"} question`}>
+          {formStep >= 6 && (
+            <div className={`${formStep === 6 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
                   <h4 className='question__header-title'>2. Descubriendo riesgos​</h4>
@@ -254,8 +214,8 @@ const IndexPage2 = () => {
               </div>
             </div>
           )}
-          {formStep >= 9 && (
-            <div className={`${formStep === 9 ? "block" : "hidden"} question`}>
+          {formStep >= 7 && (
+            <div className={`${formStep === 7 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
                   <h4 className='question__header-title'>3. Administración del proceso de ERM​</h4>
@@ -293,8 +253,8 @@ const IndexPage2 = () => {
               </div>
             </div>
           )}
-          {formStep >= 10 && (
-            <div className={`${formStep === 10 ? "block" : "hidden"} question`}>
+          {formStep >= 8 && (
+            <div className={`${formStep === 8 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
                   <h4 className='question__header-title'>4. Apetito de la Gestión de Riesgos​</h4>
@@ -332,8 +292,8 @@ const IndexPage2 = () => {
               </div>
             </div>
           )}
-          {formStep >= 11 && (
-            <div className={`${formStep === 11 ? "block" : "hidden"} question`}>
+          {formStep >= 9 && (
+            <div className={`${formStep === 9 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
                   <h4 className='question__header-title'>5. Disciplina de Causa Raíz​</h4>
@@ -371,8 +331,8 @@ const IndexPage2 = () => {
               </div>
             </div>
           )}
-          {formStep >= 12 && (
-            <div className={`${formStep === 12 ? "block" : "hidden"} question`}>
+          {formStep >= 10 && (
+            <div className={`${formStep === 10 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
                   <h4 className='question__header-title'>6. Resiliencia y sostenibilidad empresarial​</h4>
@@ -410,8 +370,8 @@ const IndexPage2 = () => {
               </div>
             </div>
           )}
-          {formStep >= 13 && (
-            <div className={`${formStep === 13 ? "block" : "hidden"} question`}>
+          {formStep >= 11 && (
+            <div className={`${formStep === 11 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
                   <h4 className='question__header-title'>7. Gestión del desempeño</h4>

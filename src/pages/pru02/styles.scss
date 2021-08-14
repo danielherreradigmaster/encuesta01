@@ -51,13 +51,7 @@
 }
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
 
-
-
-
 .survey { 
-  min-height: 100vh;
-  background-color: #F8F5F6;
-
   &__body {
     margin: 0 auto;
   }
@@ -118,7 +112,8 @@
   @media #{$mq-md} {
     display: flex;
     flex-direction: row-reverse;
-    height: 100vh;
+    min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
   &__container-img {
@@ -164,8 +159,79 @@
     line-height: 20px;
     color: rgba(0, 0, 0, 0.7);
     text-align: left;    
+    margin-bottom: 50px;
   }
 }
+
+.control-checkbox {
+  margin-bottom: 16px;
+
+  &__label {
+    padding-left: 30px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__checkbox[type=checkbox] {
+    display: none;
+  }
+  &__checkbox[type=checkbox]:not(:checked) + &__label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    /* top: -1px; */
+    border-radius: 2px;
+    border: 2px solid #757575;
+    background-color: #fff;
+    transition: 0.2s;
+    left: 0;
+  }
+  &__checkbox[type=checkbox]:checked + &__label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    /* top: -1px; */
+    border-radius: 2px;
+    border: 2px solid #00bbd6;
+    background-color: #00bbd6;
+    transition: 0.2s;
+    left: 0;
+  }
+  &__checkbox[type=checkbox]:checked + &__label::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    /* top: 0px; */
+    border-radius: 2px;
+    transition: 0.2s;
+    left: 6px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotate(36deg);
+    -ms-transform: rotate(36deg);
+    transform: rotate(36deg);
+    animation: fade-in 0.5s;
+    margin-bottom: 4px;
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+
 
 .control-input {
   position: relative;
@@ -231,12 +297,12 @@
   }
 }
 
-
-.evaluation-start {
-  min-height: 100vh;
+.evaluation-start {  
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  min-height: calc(var(--vh, 1vh) * 100);
 
   &__content {
     padding: 40px;
@@ -245,17 +311,25 @@
 
   &__title {
     font-weight: unset;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 28px;
     color: rgb(0, 0, 0);
+
+    @media #{$mq-md} {
+      width: 720px;
+    }
   }
 
   &__description {
     font-weight: unset;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 28px;
     color: rgba(0, 0, 0, 0.7);
     text-align: center;
+
+    @media #{$mq-md} {
+      width: 720px;
+    }
   }
 }
 
@@ -276,6 +350,11 @@
     padding: 10px;
     margin-bottom: 38px;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  }
+
+  &__header-title1 {
+    margin-bottom: 10px;
+    font-weight: 500;
   }
 
   &__name {
@@ -399,6 +478,7 @@
     background-color: #EBE9E9;    
     min-height: 70px;
     box-shadow: rgb(0 0 0 / 10%) 0px -1px;
+    justify-content: center;
   }
 
   &--accept {
@@ -417,6 +497,10 @@
     min-height: 48px;
     border-radius: 4px !important;
     background-color: rgb(230, 40, 30) !important;
+
+    @media #{$mq-md} {
+      width: 33.33%;
+    }
   }
 
   &__button--accept {
