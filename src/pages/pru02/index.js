@@ -66,8 +66,6 @@ const IndexPage2 = () => {
               <div className='personal-data__container'>
                 <h4 className='personal-data__title'>Datos Personales</h4>
                 <p className='personal-data__description'>En Rimac velamos por proteger la información de nuestros clientes, respetando la confidencialidad de sus datos. Ten por seguro que la información reunida será únicamente utilizada para mejorar nuestros servicios en Gestión de Riesgos:​</p>         
-                
-                
                 <div className="control-checkbox">
                   <input className='control-checkbox__checkbox' id="checkboxName1" type="checkbox"/>
                   <label className='control-checkbox__label' htmlFor="checkboxName1">He leído y acepto los términos y condiciones de uso He leído y acepto los términos y condiciones de uso He leído y acepto los términos y condiciones de uso</label>
@@ -76,8 +74,6 @@ const IndexPage2 = () => {
                   <input className='control-checkbox__checkbox' id="checkboxName2" type="checkbox"/>
                   <label className='control-checkbox__label' htmlFor="checkboxName2">He leído y acepto los términos y condiciones de uso</label>
                 </div>
-
-
               </div>
             </div>
           )}
@@ -404,6 +400,65 @@ const IndexPage2 = () => {
                       <input type="radio" id="someRadioId67" name="someGroupName7"  {...register('someGroupName7')}/>
                       <label className='survey__answer-text' htmlFor="someRadioId67">f. La evaluación y medición de la mejora del desempeño es parte de la cultura del riesgo. La organización mide la efectividad de gestionar las incertidumbres y aprovechar las oportunidades de riesgo con un enfoque claro, conciso, eficaz y comunicacional.​​</label>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {formStep >= 12 && (
+            <div className={`${formStep === 12 ? "block" : "hidden"} question`}>
+              <div className='question__container'>
+                <div className='question__header'>
+                  <h4 className='question__header-title'>Nos gustaría escucharte</h4>
+                  <p className='question__header-content'></p>
+                </div>
+                <div className='question__body'>
+                  <h4 className='question__name'>¿En cuál de los siguientes atributos recomendados por RIMS te gustaría recibir servicios como valor agregado de Rimac? <span className='survey__asterisk'>*</span></h4>
+                  <div className='question__answer'>                    
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId18" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId18">Atributo 1: Adopción de una Gestión de Riesgos Empresarial: mide la cultura de riesgos de la organización y considera el grado de apoyo de la alta dirección.​​​​</label>
+                    </div>
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId28" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId28">Atributo 2: Descubriendo riesgos: mide la calidad y alcance en la documentación de actividades de evaluación de riesgos y oportunidades.</label>
+                    </div>
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId38" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId38">Atributo 3: Administración del proceso de ERM: mide el grado de implementación y concientización en una metodología de ERM</label>
+                    </div>
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId48" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId48">Atributo 4: Apetito de la Gestión de Riesgos: evalúa el nivel de conciencia en la relación riesgo-oportunidad, la tolerancias al riesgo y si la organización es eficaz para cerrar la brecha entre el riesgo potencial y el real.​</label>
+                    </div>
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId58" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId58">Atributo 5: Disciplina de causa raíz: evalúa hasta qué punto una organización identifica el riesgo por fuente o causa raíz.​​</label>
+                    </div>
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId68" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId68">Atributo 6: Resiliencia y sostenibilidad empresarial: evalúa la medida en que la continuidad del negocio, la planificación operativa y la sostenibilidad se abordan con una metodología basada en riesgos.</label>
+                    </div>
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId78" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId78">Atributo 7: Gestión del desempeño: determina el grado en que una Organización ejecuta sus visiones y estrategia.</label>
+                    </div>
+                    <div className="question__input-group">
+                      <input type="radio" id="someRadioId88" name="someGroupName8"  {...register('someGroupName8')}/>
+                      <label className='survey__answer-text' htmlFor="someRadioId88">Otros:</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {formStep >= 13 && (
+            <div className={`${formStep === 13 ? "block" : "hidden"} thank-you`}>
+              <div className='thank-you__content'>
+                <div className="thank-you__wrapper-1">
+                  <div className="thank-you__wrapper-2">
+                    <h1 className='thank-you__title'>¡Gracias por tu respuesta!</h1>
+                    <p className='thank-you__description'>Nos pondremos en contacto contigo en las próximas semanas para informarte sobre tus resultados.</p>
                   </div>
                 </div>
               </div>
