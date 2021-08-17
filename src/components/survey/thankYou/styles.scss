@@ -1,0 +1,40 @@
+@import '../../../sass/abstracts/variables';
+
+
+.thank-you {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    background: $white;
+    max-width: 600px;
+    margin: 0 10px; 
+
+    @media #{$mq-md} {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    font-size: 4em;
+    color: $gray-2;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 1.3em;
+    color: $gray-2;
+  }
+
+}
