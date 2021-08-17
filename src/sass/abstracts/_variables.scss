@@ -1,6 +1,43 @@
+// COLORS
+
+$black: #000000;
+$white: #ffffff;
+//GREEN
+$green-1: #7bc949;
+
+//BLUE
+$blue-1: #5f00d0;
+
+//YELLOW
+$yellow-1: #ffbf00;
+
+//RED
+$red-1: #e6281e;
+
+//GRAY
+$gray-1: #888b8d;
+$gray-2: #bfbfbf;
+$gray-3: #d9d9d9;
+
+// media-query
+
 $mq-xs:	"(min-width: 320px)";
 $mq-sm:	"(min-width: 576px)";
 $mq-md:	"(min-width: 768px)";
 $mq-lg:	"(min-width: 992px)";
 $mq-xl:	"(min-width: 1200px)";
 $mq-xxl: "(min-width: 1600px)";
+
+// BREAKPOINTS
+$mq-breakpoints: (
+  xsmall: 360px,
+  small: 768px,
+  medium: 1024px,
+  mdlandscape: 1116px,
+  large: 1280px
+);
+
+// Z-INDEX
+$z-index-1: 10;
+$z-index-2: 20;
+$z-index-3: 30;

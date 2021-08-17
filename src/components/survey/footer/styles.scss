@@ -1,0 +1,55 @@
+@import '../../../sass/abstracts/variables';
+
+
+.footer {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 6;    
+  
+  &--start {
+    padding: 0 16px;
+    background-color: #EBE9E9;    
+    min-height: 70px;
+    box-shadow: rgb(0 0 0 / 10%) 0px -1px;
+    justify-content: center;
+  }
+
+  &--accept {
+    justify-content: space-between;
+    padding: 8px;
+    min-height: 52px;
+    background-color: rgba(248, 245, 246, 0.8);
+
+    @media #{$mq-md} {
+      justify-content: center;
+    }
+  }
+
+  &__img {
+    @media #{$mq-md} {
+      position: absolute;
+      right: 0;
+      margin-right: 10px;
+    }
+  }
+  
+  &__button--start {
+    border-color: unset !important;
+    min-height: 48px;
+    border-radius: 4px !important;
+    background-color: rgb(230, 40, 30) !important;
+
+    @media #{$mq-md} {
+      width: 33.33%;
+    }
+  }
+
+  &__button--accept {
+    border-color: unset !important;
+    border-radius: 4px !important;
+    background-color: rgb(230, 40, 30) !important;
+  }
+}

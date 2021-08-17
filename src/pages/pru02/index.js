@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Alert, Button, Progress, Space } from 'antd';
 
+import SurveyFooter from '../../components/survey/footer';
 import LogoRimac from '../../assets/img/logo-rimac.png';
 import DatosPersonales from '../../assets/img/datos-personales.png';
 import './styles.scss';
@@ -20,12 +21,12 @@ const IndexPage2 = () => {
     mode: "onChange",
   })
 
-  const handleStepCompletion = () => {
+  const handleNextStep = () => {
     setFormStep(cur => cur + 1);
     setPercent(_ => (formStep/TOTAL_STEPS)*100);
   }
 
-  const handleGoBackToPreviousStep = () => {
+  const handleGoBackStep = () => {
     setFormStep(cur => cur - 1);
     setPercent(_ => (formStep/TOTAL_STEPS)*100);
   }
@@ -44,20 +45,20 @@ const IndexPage2 = () => {
   return (
     <div className="survey">
       <div  className='survey__body'>
-        {formStep === 1 && (
-          <div className='welcome'>
-            <img className='welcome__img' src={LogoRimac} alt=''/>
-            <h2 className='welcome__title'>Encuesta de Nivel de Madurez en Gestión de Riesgos</h2>
-            <p className='welcome__description'>
-              <span>Desde RIMAC queremos ser tu aliado en la Gestión de Riesgos Empresarial - ERM. Con esta encuesta podrás conocer el Nivel de Madurez de tu empresa. Esta herramienta se encuentra basada en el Modelo de Madurez de Riesgo elaborado por Risk and Insurance Management Society, Inc. - RIMS.</span>
-              <br/><br/>
-              <span>Tu respuesta es muy valiosa y con ella podremos brindarte servicios acorde a tus necesidades.</span>
-              <br/>
-              <span>Gracias.</span>
-            </p>
-          </div>
-        )}
         <form onSubmit={handleSubmit(onSubmit)}>
+          {formStep === 1 && (
+            <div className='welcome'>
+              <img className='welcome__img' src={LogoRimac} alt=''/>
+              <h2 className='welcome__title'>Encuesta de Nivel de Madurez en Gestión de Riesgos</h2>
+              <p className='welcome__description'>
+                <span>Desde RIMAC queremos ser tu aliado en la Gestión de Riesgos Empresarial - ERM. Con esta encuesta podrás conocer el Nivel de Madurez de tu empresa. Esta herramienta se encuentra basada en el Modelo de Madurez de Riesgo elaborado por Risk and Insurance Management Society, Inc. - RIMS.</span>
+                <br/><br/>
+                <span>Tu respuesta es muy valiosa y con ella podremos brindarte servicios acorde a tus necesidades.</span>
+                <br/>
+                <span>Gracias.</span>
+              </p>
+            </div>
+          )}
           {formStep >= 2 && (
             <div className={`${formStep === 2 ? "block" : "hidden"} personal-data`}>
               <div className='personal-data__container-img'>
@@ -129,17 +130,17 @@ const IndexPage2 = () => {
               <div className='evaluation-start__content'>
                 <h1 className='evaluation-start__title'>Evaluación del nivel de madurez</h1>
                 <p className='evaluation-start__description'>A continuación te presentamos 7 preguntas para que puedas conocer tu nivel de madurez según la Metodología de RIMS.</p>
+                <p className='evaluation-start__required'>Todas las preguntas son obligatorias *</p>
               </div>
             </div>
           )}
-
           {formStep >= 5 && (
             <div className={`${formStep === 5 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <Alert className='question__header-title1' message="1. Adopción de una Gestión de Riesgos Empresarial" type="error" />
+                  <Alert className='question__header-title' message="Atributo 1: Adopción de una Gestión de Riesgos Empresarial"/>
                   <p className='question__header-content'>Este atributo mide la cultura de riesgos de la organización y considera el grado de apoyo a nivel ejecutivo o de la alta dirección para la gestión de riesgos empresariales (ERM, por las siglas en inglés de Enterprise Risk Management).​</p>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?</h4>
                 </div>
                 <div className='question__body'>
                   <div className='question__answer'>
@@ -171,73 +172,16 @@ const IndexPage2 = () => {
                 </div>
               </div>
             </div>
-          )}
-
-
-
+          )}          
           {formStep >= 6 && (
-            <div className={`${formStep === 6 ? "block" : "hidden"} question2`}>
-              <div className='question2__container'>
-                <div className='question2__header'>
-                  <h4 className='question2__header-title'>2. Descubriendo riesgos​</h4>
-                  <p className='question2__header-content'>Este atributo mide la calidad y cobertura de penetración de las actividades de evaluación de riesgos en la documentación de riesgos y oportunidades.​</p>
-                </div>
-                <div className='question2__body'>
-                  <h4 className='question2__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
-                  <div className='question2__answer'>
-                    <div className="question2__input-group">
-                      <input type="radio" id="someRadioId12" name="someGroupName2"  {...register('someGroupName2')}/>
-                      <label className='question2__label' htmlFor="someRadioId12">a. La organización cree que conoce los riesgos más importantes a los que está expuesta, aunque probablemente exista poca documentación.​</label>
-                    </div>
-                    <div className="question2__input-group">
-                      <input type="radio" id="someRadioId22" name="someGroupName2"  {...register('someGroupName2')}/>
-                      <label className='question2__label' htmlFor="someRadioId22">b. La organización cuenta con un administrador de riesgos, que probablemente no cuenta con información real o actualizada.​</label>
-                    </div>
-                    <div className="question2__input-group">
-                      <input type="radio" id="someRadioId32" name="someGroupName2"  {...register('someGroupName2')}/>
-                      <label className='question2__label' htmlFor="someRadioId32">c. La gestión de riesgos incluye listas y discusiones sobre riesgos. Sin embargo, algunas áreas no comparten todos sus riesgos generando inconsistencias. Los indicadores de gestión de riesgos están basados en eventos pasados.</label>
-                    </div>
-                    <div className="question2__input-group">
-                      <input type="radio" id="someRadioId42" name="someGroupName2"  {...register('someGroupName2')}/>
-                      <label className='question2__label' htmlFor="someRadioId42">d. La organización cuenta con criterios de evaluación de riesgos estandarizados. Los responsables de cada proceso desarrollan una lista de sus respectivos riesgos y los gestionan. La mitigación de riesgos está integrada con evaluaciones para monitorear su efectividad.​</label>
-                    </div>
-                    <div className="question2__input-group">
-                      <input type="radio" id="someRadioId52" name="someGroupName2"  {...register('someGroupName2')}/>
-                      <label className='question2__label' htmlFor="someRadioId52">e. La organización cuenta con criterios de evaluación de riesgos estandarizados. Los responsables de cada proceso gestionan constantemente una lista creciente de riesgos para luego evaluarlos.Los indicadores de riesgo críticos para sus áreas se revisan periódicamente en colaboración con el equipo de gestión de riesgos.</label>
-                    </div>
-                    <div className="question2__input-group">
-                      <input type="radio" id="someRadioId62" name="someGroupName2"  {...register('someGroupName2')}/>
-                      <label className='question2__label' htmlFor="someRadioId62">f. Los responsables de cada área revisan y mejoran regularmente los indicadores de riesgo que se les adapta mejor. Una estructura de informes rutinaria y oportuna dirige los riesgos y las oportunidades a la alta dirección.</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-          {/* {formStep >= 6 && (
             <div className={`${formStep === 6 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>2. Descubriendo riesgos​</h4>
+                  <Alert className='question__header-title' message="Atributo 2: Descubriendo riesgos" type="error" />
                   <p className='question__header-content'>Este atributo mide la calidad y cobertura de penetración de las actividades de evaluación de riesgos en la documentación de riesgos y oportunidades.​</p>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?</h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId12" name="someGroupName2"  {...register('someGroupName2')}/>
@@ -267,21 +211,16 @@ const IndexPage2 = () => {
                 </div>
               </div>
             </div>
-          )} */}
-
-
-
-
-
+          )}
           {formStep >= 7 && (
             <div className={`${formStep === 7 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>3. Administración del proceso de ERM​</h4>
+                  <Alert className='question__header-title' message="Atributo 3: Administración del proceso de ERM" type="error" />
                   <p className='question__header-content'>Este atributo mide el grado en que la organización ha adoptado una metodología de ERM a lo largo de su cultura y utiliza los pasos del proceso ERM para identificar, evaluar, mitigar y monitorear riesgos.</p>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización?</h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización?​ <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId13" name="someGroupName3"  {...register('someGroupName3')}/>
@@ -316,11 +255,11 @@ const IndexPage2 = () => {
             <div className={`${formStep === 8 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>4. Apetito de la Gestión de Riesgos​</h4>
+                  <Alert className='question__header-title' message="Atributo 4: Apetito de la Gestión de Riesgos​" type="error" />
                   <p className='question__header-content'>Este atributo evalúa el nivel de conciencia en la relación riesgo-oportunidad, la responsabilidad por el riesgo, la definición de tolerancias al riesgo y si la organización es eficaz para cerrar la brecha entre el riesgo potencial y el real.​​</p>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?</h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId14" name="someGroupName4"  {...register('someGroupName4')}/>
@@ -355,11 +294,11 @@ const IndexPage2 = () => {
             <div className={`${formStep === 9 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>5. Disciplina de Causa Raíz​</h4>
+                  <Alert className='question__header-title' message="Atributo 5: Disciplina de Causa Raíz" type="error" />
                   <p className='question__header-content'>Este atributo evalúa hasta qué punto una organización identifica el riesgo por fuente o causa raíz, en comparación con los síntomas y resultados que producen.​​</p>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?</h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId15" name="someGroupName5"  {...register('someGroupName5')}/>
@@ -394,11 +333,11 @@ const IndexPage2 = () => {
             <div className={`${formStep === 10 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>6. Resiliencia y sostenibilidad empresarial​</h4>
+                  <Alert className='question__header-title' message="Atributo 6: Resiliencia y sostenibilidad empresarial​" type="error" />
                   <p className='question__header-content'>Este atributo evalúa la medida en que la continuidad del negocio, la planificación operativa y otras actividades de sostenibilidad se abordan con una metodología basada en riesgos.​</p>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?</h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId16" name="someGroupName6"  {...register('someGroupName6')}/>
@@ -433,11 +372,11 @@ const IndexPage2 = () => {
             <div className={`${formStep === 11 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>7. Gestión del desempeño</h4>
+                  <Alert className='question__header-title' message="Atributo 7: Gestión del desempeño" type="error" />
                   <p className='question__header-content'>Este atributo determina el grado en que una Organización ejecuta sus visiones y estrategia.​​</p>
+                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?</h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?​ <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId17" name="someGroupName7"  {...register('someGroupName7')}/>
@@ -472,11 +411,9 @@ const IndexPage2 = () => {
             <div className={`${formStep === 12 ? "block" : "hidden"} question`}>
               <div className='question__container'>
                 <div className='question__header'>
-                  <h4 className='question__header-title'>Nos gustaría escucharte</h4>
-                  <p className='question__header-content'></p>
+                  <h4 className='question__name'>¿En cuál de los siguientes atributos recomendados por RIMS te gustaría recibir servicios como valor agregado de Rimac?</h4>
                 </div>
                 <div className='question__body'>
-                  <h4 className='question__name'>¿En cuál de los siguientes atributos recomendados por RIMS te gustaría recibir servicios como valor agregado de Rimac? <span className='survey__asterisk'>*</span></h4>
                   <div className='question__answer'>                    
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId18" name="someGroupName8"  {...register('someGroupName8')}/>
@@ -508,7 +445,16 @@ const IndexPage2 = () => {
                     </div>
                     <div className="question__input-group">
                       <input type="radio" id="someRadioId88" name="someGroupName8"  {...register('someGroupName8')}/>
-                      <label className='question__label' htmlFor="someRadioId88">Otros:</label>
+                      <label className='question__label' htmlFor="someRadioId88">Ninguno</label>
+                    </div>
+                    <div className='question__others'>
+                      <div className="question__others-input-wrap">
+                        <input className='question__others-input' type="text" required/>
+                      </div>
+                      <div className="question__input-group">
+                        <input type="radio" id="someRadioId89" name="someGroupName8"  {...register('someGroupName8')}/>
+                        <label className='question__label' htmlFor="someRadioId89">Otros:</label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -518,32 +464,19 @@ const IndexPage2 = () => {
           {formStep >= 13 && (
             <div className={`${formStep === 13 ? "block" : "hidden"} thank-you`}>
               <div className='thank-you__content'>
-                <div className="thank-you__wrapper-1">
-                  <div className="thank-you__wrapper-2">
-                    <h1 className='thank-you__title'>¡Gracias por tu respuesta!</h1>
-                    <p className='thank-you__description'>Nos pondremos en contacto contigo en las próximas semanas para informarte sobre tus resultados.</p>
-                  </div>
+                <div className="thank-you__wrapper">
+                  <h1 className='thank-you__title'>¡Gracias por tu respuesta!</h1>
+                  <p className='thank-you__description'>Nos pondremos en contacto contigo en las próximas semanas para informarte sobre tus resultados.</p>                  
                 </div>
               </div>
             </div>
           )}
+          <SurveyFooter 
+            formStep={formStep}
+            handleGoBackStep={handleGoBackStep}
+            handleNextStep={handleNextStep}
+          />
         </form>
-      </div>
-
-
-
-      
-      <div className={`footer footer--${formStep === 1 ? "start" : "accept"}`}>
-        {formStep === 1 && (<Button className='footer__button--start' type="primary" size='large' htmlType='button' block onClick={handleStepCompletion}>Comenzar</Button>)}
-        {formStep >=2 && (
-          <>
-            <Space size='small'>
-              <Button className='footer__button--accept' type="primary" htmlType='button' onClick={handleGoBackToPreviousStep}>Atrás</Button>
-              <Button className='footer__button--accept' type="primary" htmlType='button' onClick={handleStepCompletion}>Siguiente</Button>
-            </Space>
-            <img className='footer__img' src={LogoRimac} alt='' height='34px' />
-          </>
-        )}
       </div>
     </div>
   )
