@@ -34,7 +34,7 @@ const Footer = ({
         <>
           <Space size='small'>
             <Button className='footer__button--accept' type="primary" htmlType='button' onClick={handleGoBackStep}>Atrás</Button>
-            <Button className='footer__button--accept' type="primary" htmlType='button' onClick={handleNextStep}>Finalizar</Button>
+            <Button className='footer__button--accept' type="primary" htmlType='submit' /* onClick={handleNextStep} */>Finalizar</Button>
           </Space>
           <img className='footer__img' src={LogoRimac} alt='' height='34px' />
         </>
