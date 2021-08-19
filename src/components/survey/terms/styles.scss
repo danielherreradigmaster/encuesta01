@@ -1,0 +1,125 @@
+@import '../../../sass/abstracts/variables';
+
+.personal-data {
+
+  @media #{$mq-md} {
+    display: flex;
+    flex-direction: row-reverse;
+    min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+
+  &__container-img {
+    height: 223.92px;
+
+    @media #{$mq-md} {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  &__container {
+    /* padding: 24px 40px 72px; */
+    padding: 8px 40px 72px;
+
+    @media #{$mq-md} {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    font-weight: unset;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(0, 0, 0);
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+  }
+
+  &__description {
+    font-weight: unset;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: left;    
+    margin-bottom: 50px;
+  }
+}
+
+.control-checkbox {
+  margin-bottom: 16px;
+
+  &__label {
+    padding-left: 30px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__checkbox[type=checkbox] {
+    display: none;
+  }
+  &__checkbox[type=checkbox]:not(:checked) + &__label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    /* top: -1px; */
+    border-radius: 2px;
+    border: 2px solid #757575;
+    background-color: #fff;
+    transition: 0.2s;
+    left: 0;
+  }
+  &__checkbox[type=checkbox]:checked + &__label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    /* top: -1px; */
+    border-radius: 2px;
+    border: 2px solid #00bbd6;
+    background-color: #00bbd6;
+    transition: 0.2s;
+    left: 0;
+  }
+  &__checkbox[type=checkbox]:checked + &__label::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    /* top: 0px; */
+    border-radius: 2px;
+    transition: 0.2s;
+    left: 6px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotate(36deg);
+    -ms-transform: rotate(36deg);
+    transform: rotate(36deg);
+    animation: fade-in 0.5s;
+    margin-bottom: 4px;
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

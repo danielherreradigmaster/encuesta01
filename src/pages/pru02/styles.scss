@@ -57,12 +57,12 @@
   }
 }
 
-.personal-data {
+/* .personal-data {
 
   @media #{$mq-md} {
     display: flex;
     flex-direction: row-reverse;
-    min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    min-height: 100vh;
     min-height: calc(var(--vh, 1vh) * 100);
   }
 
@@ -84,7 +84,6 @@
   }
 
   &__container {
-    /* padding: 24px 40px 72px; */
     padding: 8px 40px 72px;
 
     @media #{$mq-md} {
@@ -112,8 +111,8 @@
     margin-bottom: 50px;
   }
 }
-
-.control-checkbox {
+ */
+/* .control-checkbox {
   margin-bottom: 16px;
 
   &__label {
@@ -133,7 +132,6 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    /* top: -1px; */
     border-radius: 2px;
     border: 2px solid #757575;
     background-color: #fff;
@@ -145,7 +143,6 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    /* top: -1px; */
     border-radius: 2px;
     border: 2px solid #00bbd6;
     background-color: #00bbd6;
@@ -157,7 +154,6 @@
     position: absolute;
     width: 6px;
     height: 12px;
-    /* top: 0px; */
     border-radius: 2px;
     transition: 0.2s;
     left: 6px;
@@ -243,13 +239,13 @@
   &__input:valid + &__label::after {
     transform: translateX(0%);
   }
-}
+} */
 
-.evaluation-start {  
+/* .evaluation-start {  
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
 
   &__content {
@@ -287,9 +283,9 @@
     line-height: 28px;
     color: $red-1;
   }
-}
+} */
 
-.question { 
+/* .question { 
 
   @media #{$mq-md} {
     max-width: 768px;
@@ -377,7 +373,6 @@
         border-radius: 50%;
         z-index: 2;
         position: absolute;
-        /* right: 30px; */
         left: 10px;
         top: 50%;
         transform: translateY(-50%);
@@ -408,7 +403,6 @@
       order: 1;
       z-index: 2;
       position: absolute;
-      /* right: 30px; */
       left: 10px;
       top: 50%;
       transform: translateY(-50%);
@@ -445,7 +439,7 @@
     outline:none;
   }
 
-}
+} */
 
 .hidden {
   display: none;

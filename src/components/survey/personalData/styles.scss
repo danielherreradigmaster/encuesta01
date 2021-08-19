@@ -1,0 +1,119 @@
+@import '../../../sass/abstracts/variables';
+
+.personal-data {
+
+  @media #{$mq-md} {
+    display: flex;
+    flex-direction: row-reverse;
+    min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+
+  &__container-img {
+    height: 223.92px;
+
+    @media #{$mq-md} {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  &__container {
+    /* padding: 24px 40px 72px; */
+    padding: 8px 40px 72px;
+
+    @media #{$mq-md} {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    font-weight: unset;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(0, 0, 0);
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+  }
+
+  &__description {
+    font-weight: unset;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: left;    
+    margin-bottom: 50px;
+  }
+}
+
+.control-input {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+  color: $black;
+  margin-bottom: 20px;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    border: none;
+    background: #F8F5F6;
+    color: $black;
+    font-size: 18px;
+  }
+
+  &__label {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid $black;    
+  }
+
+  &__label::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid $black;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
+
+  &__content-name {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-bottom: 1px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+  }
+
+  &__input:focus {
+    outline: none;
+  }
+  &__input:focus + &__label &__content-name {
+    transform: translateY(-150%);
+    font-size: 14px;
+    left: 0px;
+    color: $black;
+  }
+  &__input:focus + &__label::after {
+    transform: translateX(0%);
+  }
+}

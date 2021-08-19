@@ -1,15 +1,14 @@
 import { Alert } from 'antd';
+import './styles.scss';
 
-const Question = ({ 
-  step = 0,
-  formStep = 0, 
+const Wrapper = ({
   title = '',
   description = '',
   questionValue = '',
   children,
 }) => {
   return (
-    <div className={`${formStep === step ? "block" : "hidden"} question`}>
+    <div className='question'>
       <div className='question__container'>
         <div className='question__header'>
           {title && (<Alert className='question__header-title' message={title}/>)}
@@ -26,4 +25,4 @@ const Question = ({
   )
 };
 
-export default Question;
+export default Wrapper;
