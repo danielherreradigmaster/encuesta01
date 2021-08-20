@@ -32,7 +32,6 @@ const Question5 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId65" name="someGroupName5" value='someRadioId65' {...register('someGroupName5')}/>
         <label className='question__label' htmlFor="someRadioId65">f. La organización utiliza eventos pasados propios o ajenos para definir categorías de causa raíz que le permitan prepararse para eventos futuros. La organización rastrea los eventos y la causa raíz al evaluar los costos-beneficios de las mejoras.​</label>
       </div>
-      {errors.someGroupName5 && <p>{errors.someGroupName5.message}</p>}
     </Wrapper>
   )
 };

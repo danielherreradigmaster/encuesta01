@@ -36,50 +36,50 @@ const _personalData = {
 
 const termsSchema = yup.object().shape({
   checkboxName1: yup
-              .bool().oneOf([true], 'Accept Ts & Cs is required'),
+              .bool().oneOf([true], 'Campo requerido'),
   checkboxName2: yup
-              .bool().oneOf([true], 'Accept Ts & Cs is required'),
+              .bool().oneOf([true], 'Campo requerido'),
 });
 
 const personalDataSchema = yup.object().shape({
   email: yup
       .string()
-      .required('campo requerido'),
-  fullname: yup.string().required('campo requerido'),
-  company: yup.string().required('campo requerido'),
-  position: yup.string().required('campo requerido'),
+      .required('Campo requerido'),
+  fullname: yup.string().required('Campo requerido'),
+  company: yup.string().required('Campo requerido'),
+  position: yup.string().required('Campo requerido'),
 });
 
 const question1Schema = yup.object().shape({
-  someGroupName1: yup.mixed().nullable().required('campo requerido1'),
+  someGroupName1: yup.mixed().nullable().required('Campo requerido'),
 }); 
 
 const question2Schema = yup.object().shape({
-  someGroupName2: yup.mixed().nullable().required('campo requerido2'),
+  someGroupName2: yup.mixed().nullable().required('Campo requerido'),
 });
 
 const question3Schema = yup.object().shape({
-  someGroupName3: yup.mixed().nullable().required('campo requerido3'),
+  someGroupName3: yup.mixed().nullable().required('Campo requerido'),
 });
 
 const question4Schema = yup.object().shape({
-  someGroupName4: yup.mixed().nullable().required('campo requerido4'),
+  someGroupName4: yup.mixed().nullable().required('Campo requerido'),
 });
 
 const question5Schema = yup.object().shape({
-  someGroupName5: yup.mixed().nullable().required('campo requerido5'),
+  someGroupName5: yup.mixed().nullable().required('Campo requerido'),
 });
 
 const question6Schema = yup.object().shape({
-  someGroupName6: yup.mixed().nullable().required('campo requerido6'),
+  someGroupName6: yup.mixed().nullable().required('Campo requerido'),
 });
 
 const question7Schema = yup.object().shape({
-  someGroupName7: yup.mixed().nullable().required('campo requerido7'),
+  someGroupName7: yup.mixed().nullable().required('Campo requerido'),
 });
 
 const question8Schema = yup.object().shape({
-  someGroupName8: yup.mixed().nullable().required('campo requerido8'),
+  someGroupName8: yup.mixed().nullable().required('Campo requerido'),
 });
 
 const IndexPage2 = () => {
@@ -133,10 +133,13 @@ const IndexPage2 = () => {
   };
 
   const onError = (errors, e) => {
-    message.destroy();
-    message.error('This is an error messagexxxxxxxxxxxxxxxx');
-    console.log('superchuspito');
-    console.log(errors, e);
+    if(formStep >= 5) {
+      message.destroy();
+      message.error({
+        content: 'Selecciona una opcion por favor',
+        className: 'alert-error',
+      });
+    }
   };
 
   const getStepContent = (stepIndex) => {

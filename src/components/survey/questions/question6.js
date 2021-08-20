@@ -32,7 +32,6 @@ const Question6 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId66" name="someGroupName6" value='someRadioId66' {...register('someGroupName6')}/>
         <label className='question__label' htmlFor="someRadioId66">f. Todos los temas se enmarcan en el contexto de la continuidad de los servicios a todas las partes interesadas. La sostenibilidad no es un estado final alcanzable; más bien, es característico de un sistema dinámico y en evolución.​</label>
       </div>
-      {errors.someGroupName6 && <p>{errors.someGroupName6.message}</p>}
     </Wrapper>
   )
 };

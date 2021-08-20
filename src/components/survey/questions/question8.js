@@ -40,7 +40,6 @@ const Question8 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId88" name="someGroupName8" value='someRadioId88' {...register('someGroupName8')}/>
         <label className='question__label' htmlFor="someRadioId88">Ninguno</label>
       </div>
-      {errors.someGroupName8 && <p>{errors.someGroupName8.message}</p>}
       {/* <div className='question__others'>
         <div className="question__others-input-wrap">
           <input className='question__others-input' type="text" {...register('someGroupName8')}/>

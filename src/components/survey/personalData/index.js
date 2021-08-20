@@ -9,44 +9,33 @@ const PersonalData = ({ register, formState:{ errors } }) => {
       </div>
       <div className='personal-data__container'>
         <div className="control-input">
-          <input className='control-input__input' type="text" id='email' name="email" autoComplete="off" {...register('email')}/>
-          <label htmlFor="email" className="control-input__label">
-            <span className="control-input__content-name">
-              Correo electrónico
-            </span>
+          <input  id="email" className="control-input__input" name="email" type="text" placeholder="Correo electrónico" autoComplete="off" {...register('email')}/>
+          <label  htmlFor="email" className="control-input__label" data-content="Correo electrónico">
+            <span className="control-input__content-name">Correo electrónico</span>        
           </label>
+          {errors.email && <div className='invalid-message'>{errors.email.message}</div>}
         </div>
-        {errors.email && <p>{errors.email.message}</p>}
-
         <div className="control-input">
-          <input className='control-input__input' type="text" id='fullname' name="fullname" autoComplete="off" {...register('fullname')}/>
-          <label htmlFor="fullname" className="control-input__label">
-            <span className="control-input__content-name">
-              Nombres y Apellidos
-            </span>
+          <input className='control-input__input' type="text" id='fullname' name="fullname" placeholder="Nombres y Apellidos" autoComplete="off" {...register('fullname')}/>
+          <label htmlFor="fullname" className="control-input__label" data-content="Nombres y Apellidos">
+            <span className="control-input__content-name">Nombres y Apellidos</span>
           </label>
         </div>
-        {errors.fullname && <p>{errors.fullname.message}</p>}
-
+        {errors.fullname && <div className='invalid-message'>{errors.fullname.message}</div>}
         <div className="control-input">
-          <input className='control-input__input' type="text" id='company' name="company" autoComplete="off" {...register('company')}/>
-          <label htmlFor="company" className="control-input__label">
-            <span className="control-input__content-name">
-              Empresa 
-            </span>
+          <input className='control-input__input' type="text" id='company' name="company" placeholder="Empresa" autoComplete="off" {...register('company')}/>
+          <label htmlFor="company" className="control-input__label" data-content="Empresa">
+            <span className="control-input__content-name">Empresa</span>
           </label>
         </div>
-        {errors.company && <p>{errors.company.message}</p>}
-
+        {errors.company && <div className='invalid-message'>{errors.company.message}</div>}
         <div className="control-input">
-          <input className='control-input__input' type="text" id='position' name="position" autoComplete="off" {...register('position')}/>
-          <label htmlFor="position" className="control-input__label">
-            <span className="control-input__content-name">
-              Cargo
-            </span>
+          <input className='control-input__input' type="text" id='position' name="position" placeholder="Cargo" autoComplete="off" {...register('position')}/>
+          <label htmlFor="position" className="control-input__label" data-content="Cargo">
+            <span className="control-input__content-name">Cargo</span>
           </label>
         </div>
-        {errors.position && <p>{errors.position.message}</p>}
+        {errors.position && <div className='invalid-message'>{errors.position.message}</div>}
       </div>
     </div>
   )

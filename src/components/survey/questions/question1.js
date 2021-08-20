@@ -32,7 +32,6 @@ const Question1 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId61" value='someRadioId61' {...register('someGroupName1')}/>
         <label className='question__label' htmlFor="someRadioId61">f. La evaluación del riesgo es sistemática, está integrada en cada función empresarial y se mejora constantemente. El patrocinio de la alta dirección es fuerte y considera la gestión de riesgos para la toma de decisión diaria.​</label>
       </div>
-      {errors.someGroupName1 && <p>{errors.someGroupName1.message}</p>}
     </Wrapper>
   )
 };

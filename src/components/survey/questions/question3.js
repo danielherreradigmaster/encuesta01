@@ -32,7 +32,6 @@ const Question3 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId63" name="someGroupName3" value='someRadioId63' {...register('someGroupName3')}/>
         <label className='question__label' htmlFor="someRadioId63">f. La gestión de riesgos empresarial está integrada en todos los procesos y estrategias del negocio como una forma de alcanzar los objetivos. La organización utiliza un proceso de ERM que mejora la toma de decisiones y el desempeño.</label>
       </div>
-      {errors.someGroupName3 && <p>{errors.someGroupName3.message}</p>}
     </Wrapper>
   )
 };

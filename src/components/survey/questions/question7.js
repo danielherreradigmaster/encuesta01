@@ -32,7 +32,6 @@ const Question7 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId67" name="someGroupName7" value='someRadioId67' {...register('someGroupName7')}/>
         <label className='question__label' htmlFor="someRadioId67">f. La evaluación y medición de la mejora del desempeño es parte de la cultura del riesgo. La organización mide la efectividad de gestionar las incertidumbres y aprovechar las oportunidades de riesgo con un enfoque claro, conciso, eficaz y comunicacional.​​</label>
       </div>
-      {errors.someGroupName7 && <p>{errors.someGroupName7.message}</p>}
     </Wrapper>
   )
 };

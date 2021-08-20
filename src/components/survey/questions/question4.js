@@ -32,7 +32,6 @@ const Question4 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId64" name="someGroupName4" value='someRadioId64' {...register('someGroupName4')}/>
         <label className='question__label' htmlFor="someRadioId64">f. El equipo de ERM define los niveles de tolerancia para todas las áreas. Un mecanismo compara e informa el riesgo evaluado real versus la tolerancia al riesgo. La gerencia prioriza la asignación de recursos en función de la brecha entre el apetito por el riesgo y el riesgo y la oportunidad evaluados.</label>
       </div>
-      {errors.someGroupName4 && <p>{errors.someGroupName4.message}</p>}
     </Wrapper>
   )
 };

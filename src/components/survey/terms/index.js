@@ -13,12 +13,12 @@ const Terms = ({ register, formState:{ errors } }) => {
         <div className="control-checkbox">
           <input className='control-checkbox__checkbox' id="checkboxName1" type="checkbox" {...register('checkboxName1')}/>
           <label className='control-checkbox__label' htmlFor="checkboxName1">He leído y acepto los términos y condiciones de uso</label>
-          {errors.checkboxName1 && <p>{errors.checkboxName1?.message}</p>}
+          {errors.checkboxName1 && <div className='invalid-message'>{errors.checkboxName1.message}</div>}
         </div>
         <div className="control-checkbox">
           <input className='control-checkbox__checkbox' id="checkboxName2" type="checkbox" {...register('checkboxName2')}/>
           <label className='control-checkbox__label' htmlFor="checkboxName2">He leído y acepto los términos y condiciones de uso</label>
-          {errors.checkboxName2 && <p>{errors.checkboxName2?.message}</p>}
+          {errors.checkboxName2 && <div className='invalid-message'>{errors.checkboxName2.message}</div>}
         </div>
       </div>
     </div>
