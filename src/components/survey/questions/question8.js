@@ -61,7 +61,7 @@ const Question8 = ({ register, formState:{ errors } }) => {
             <input type="radio" id="someRadioId89" name="someGroupName8" value='someRadioId89' {...register('someGroupName8')}/>
             <label className='question__label' htmlFor="someRadioId89">Otros:</label>
           </div>
-        </div>  */}     
+        </div>     */}  
       </div>
     </Wrapper>
   )

@@ -80,7 +80,7 @@ const question7Schema = yup.object().shape({
 
 const question8Schema = yup.object().shape({
   someGroupName8: yup.mixed().nullable().required('Campo requerido'),
-  otros: yup.string().required('Campo requerido'),
+  /* otros: yup.string().required('Campo requerido'), */
 });
 
 const IndexPage2 = () => {
