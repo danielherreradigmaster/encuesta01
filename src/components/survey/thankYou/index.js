@@ -1,20 +1,10 @@
-import { useEffect } from 'react';
-
 import { Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
-import party from 'party-js';
 
 
 import './styles.scss'
 
-const ThankYou = () => {
-
-  useEffect(() => {
-    const _conta = document.querySelector('.survey__body');
-    party.confetti(_conta, {
-      count: party.variation.range(500, 500),
-    });
-  });           
+const ThankYou = () => {          
 
   return (
     <div className='thank-you'>

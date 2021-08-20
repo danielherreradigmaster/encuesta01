@@ -64,8 +64,10 @@
       line-height: 24px;
   
       &:before {
-        width: 10px;
-        height: 10px;
+        width: 16px;
+        height: 4px;
+        /* width: 10px;
+        height: 10px; */
         border-radius: 50%;
         content: '';
         background-color: $gray-1;
@@ -140,7 +142,7 @@
     bottom: 6px;
     z-index: 4;
     height: 36px;
-    width: 80%;
+    width: calc(100% - 108px);
   }
 
   &__others-input {
