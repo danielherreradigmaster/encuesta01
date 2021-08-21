@@ -27,7 +27,7 @@ const Wrapper2 = ({
     <div className='question'>
       <div className='question__container'>
         <div className='question__header'>
-          {title && (<Alert className='question__header-title' message={title}/>)}
+          <Alert className='question__header-title' message={title}/>
           <h4 className='question__name'>{questionValue}</h4>
           <Button className='masinfo' danger shape="round" icon={<PlusOutlined />} size={'small'} onClick={showModal}>
             Mas info

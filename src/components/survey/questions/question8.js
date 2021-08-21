@@ -14,7 +14,7 @@ const Question8 = ({ register, formState:{ errors } }) => {
 
   return (
     <Wrapper
-      title=''
+      title='Ahora selecciona uno:'
       description=''
       questionValue='¿En cuál de los siguientes atributos recomendados por RIMS te gustaría recibir servicios como valor agregado de Rimac?'
     >

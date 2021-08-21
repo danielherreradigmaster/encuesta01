@@ -137,7 +137,7 @@ const IndexPage2 = () => {
     if(formStep >= 5) {
       message.destroy();
       message.error({
-        content: 'Selecciona una opcion por favor',
+        content: 'Por favor, seleccione una opción',
         className: 'alert-error',
       });
     }
