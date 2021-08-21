@@ -22,7 +22,7 @@ import './styles.scss';
 
 const TOTAL_STEPS = 9;
 
-const _terms = {
+/* const _terms = {
   checkboxName1: 'checkboxName1',
   checkboxName2: 'checkboxName2',
 };
@@ -33,58 +33,11 @@ const _personalData = {
   company: '',
   position: '',
 };
-
-const termsSchema = yup.object().shape({
-  checkboxName1: yup
-              .bool().oneOf([true], 'Campo requerido'),
-  checkboxName2: yup
-              .bool().oneOf([true], 'Campo requerido'),
-});
-
-const personalDataSchema = yup.object().shape({
-  email: yup
-      .string()
-      .required('Campo requerido'),
-  fullname: yup.string().required('Campo requerido'),
-  company: yup.string().required('Campo requerido'),
-  position: yup.string().required('Campo requerido'),
-});
-
-const question1Schema = yup.object().shape({
-  someGroupName1: yup.mixed().nullable().required('Campo requerido'),
-}); 
-
-const question2Schema = yup.object().shape({
-  someGroupName2: yup.mixed().nullable().required('Campo requerido'),
-});
-
-const question3Schema = yup.object().shape({
-  someGroupName3: yup.mixed().nullable().required('Campo requerido'),
-});
-
-const question4Schema = yup.object().shape({
-  someGroupName4: yup.mixed().nullable().required('Campo requerido'),
-});
-
-const question5Schema = yup.object().shape({
-  someGroupName5: yup.mixed().nullable().required('Campo requerido'),
-});
-
-const question6Schema = yup.object().shape({
-  someGroupName6: yup.mixed().nullable().required('Campo requerido'),
-});
-
-const question7Schema = yup.object().shape({
-  someGroupName7: yup.mixed().nullable().required('Campo requerido'),
-});
-
-const question8Schema = yup.object().shape({
-  someGroupName8: yup.mixed().nullable().required('Campo requerido'),
-  /* otros: yup.string().required('Campo requerido'), */
-});
+ */
 
 const IndexPage2 = () => {
   const [formStep, setFormStep] = useState(1);
+  const [prueba, setPrueba] = useState(false);
   /* const {
     register,
     watch,
@@ -95,6 +48,63 @@ const IndexPage2 = () => {
     resolver: yupResolver(schema),
   }); */
 
+
+
+
+  const termsSchema = yup.object().shape({
+    checkboxName1: yup
+                .bool().oneOf([true], 'Campo requerido'),
+    checkboxName2: yup
+                .bool().oneOf([true], 'Campo requerido'),
+  });
+  
+  const personalDataSchema = yup.object().shape({
+    email: yup
+        .string()
+        .required('Campo requerido'),
+    fullname: yup.string().required('Campo requerido'),
+    company: yup.string().required('Campo requerido'),
+    position: yup.string().required('Campo requerido'),
+  });
+  
+  const question1Schema = yup.object().shape({
+    someGroupName1: yup.mixed().nullable().required('Campo requerido'),
+  }); 
+  
+  const question2Schema = yup.object().shape({
+    someGroupName2: yup.mixed().nullable().required('Campo requerido'),
+  });
+  
+  const question3Schema = yup.object().shape({
+    someGroupName3: yup.mixed().nullable().required('Campo requerido'),
+  });
+  
+  const question4Schema = yup.object().shape({
+    someGroupName4: yup.mixed().nullable().required('Campo requerido'),
+  });
+  
+  const question5Schema = yup.object().shape({
+    someGroupName5: yup.mixed().nullable().required('Campo requerido'),
+  });
+  
+  const question6Schema = yup.object().shape({
+    someGroupName6: yup.mixed().nullable().required('Campo requerido'),
+  });
+  
+  const question7Schema = yup.object().shape({
+    someGroupName7: yup.mixed().nullable().required('Campo requerido'),
+  });
+  
+  const question8Schema = yup.object().shape({
+    someGroupName8: yup.mixed().nullable().required('Campo requerido'),
+  })
+  .when((values, schema) => {
+    if(values.someGroupName8 === 'someRadioId89') {
+      return schema.shape({
+        otros: yup.string().required('Campo requerido'),
+      });
+    }
+  });
 
   const forms = { 
     1: useForm(),
@@ -170,7 +180,7 @@ const IndexPage2 = () => {
       case 11:
         return {elem: <Question7 {...formProps}/>, formProps};
       case 12:
-        return {elem: <Question8 {...formProps}/>, formProps};
+        return {elem: <Question8 {...formProps} setPrueba={setPrueba}/>, formProps};
       case 13:
         return {elem: <ThankYou/>, formProps};
       default:

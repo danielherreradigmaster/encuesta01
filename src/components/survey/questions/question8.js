@@ -2,14 +2,19 @@ import { useState } from 'react';
 import Wrapper from './wrapper';
 import './styles.scss';
 
-const Question8 = ({ register, formState:{ errors } }) => {
+const Question8 = ({ register, formState:{ errors }, setPrueba }) => {
   const [showInput, setShowInput] = useState(false);
 
   const handleInputOtros = (e) => {
     const { type, value } = e.target;
-    if(value === 'someRadioId89' && type === 'radio') 
+    if(value === 'someRadioId89' && type === 'radio') {
       setShowInput(_ => true);
-    else if(type === 'radio') setShowInput(_ => false);
+      setPrueba(_ => true);
+    }
+    else if(type === 'radio') {
+      setShowInput(_ => false);
+      setPrueba(_ => false);
+    }
   };
 
   return (
@@ -51,7 +56,7 @@ const Question8 = ({ register, formState:{ errors } }) => {
           <input type="radio" id="someRadioId88" name="someGroupName8" value='someRadioId88' {...register('someGroupName8')}/>
           <label className='question__label' htmlFor="someRadioId88">Ninguno</label>
         </div>
-        {/* <div className='question__others'>
+        <div className='question__others'>
           {showInput && (
           <div className="question__others-input-wrap">
             <input className='question__others-input' type="text" {...register('otros')}/>
@@ -60,8 +65,8 @@ const Question8 = ({ register, formState:{ errors } }) => {
           <div className="question__input-group">
             <input type="radio" id="someRadioId89" name="someGroupName8" value='someRadioId89' {...register('someGroupName8')}/>
             <label className='question__label' htmlFor="someRadioId89">Otros:</label>
-          </div>
-        </div>     */}  
+          </div>       
+        </div>      
       </div>
     </Wrapper>
   )
