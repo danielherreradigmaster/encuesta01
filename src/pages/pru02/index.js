@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { message } from 'antd';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,26 +19,14 @@ import Question7 from '../../components/survey/questions/question7';
 import Question8 from '../../components/survey/questions/question8';
 import ThankYou from '../../components/survey/thankYou';
 import SurveyFooter from '../../components/survey/footer';
+import useScrollToTop from '../../hooks/useScrollToTop';
 import './styles.scss';
-
-const TOTAL_STEPS = 9;
-
-/* const _terms = {
-  checkboxName1: 'checkboxName1',
-  checkboxName2: 'checkboxName2',
-};
-
-const _personalData = {
-  email: '',
-  fullname: '',
-  company: '',
-  position: '',
-};
- */
 
 const IndexPage2 = () => {
   const [formStep, setFormStep] = useState(1);
+  const [recaptcha, setRecaptcha] = useState(false);
   const [prueba, setPrueba] = useState(false);
+  useScrollToTop(formStep);
   /* const {
     register,
     watch,
@@ -47,9 +36,6 @@ const IndexPage2 = () => {
   } = useForm({
     resolver: yupResolver(schema),
   }); */
-
-
-
 
   const termsSchema = yup.object().shape({
     checkboxName1: yup
@@ -131,8 +117,6 @@ const IndexPage2 = () => {
   };
 
   const onSubmit = (values, e) => {
-
-    console.log('superchuspito');
     console.log(JSON.stringify(values, null, 2));
     if(formStep === 1){
       //information[1](data)
@@ -188,6 +172,10 @@ const IndexPage2 = () => {
     }
   };
 
+  const handleChange = (value) => {
+    setRecaptcha(_ => true);
+  };
+
   useEffect(() => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -199,7 +187,16 @@ const IndexPage2 = () => {
       <div  className='survey__body'>
         <form onSubmit={getStepContent(formStep).formProps.handleSubmit(onSubmit, onError)}>
           {getStepContent(formStep).elem}
+          {formStep === 12 && 
+          <ReCAPTCHA
+            style={{ width: "300px", margin: "auto", paddingBottom: '34px' }}
+            theme="light"
+            size= "normal"
+            sitekey='6LcGcuUUAAAAAO1HI5FvaNDShKdNFKL7byWFtA_o'
+            onChange={handleChange}
+          />}
           <SurveyFooter 
+            recaptcha={recaptcha}
             formStep={formStep}
             handleGoBackStep={handleGoBackStep}
           />

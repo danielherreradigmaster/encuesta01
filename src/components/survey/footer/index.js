@@ -53,6 +53,7 @@ import LogoRimac from '../../../assets/img/logo-rimac.png';
 
 const Footer = ({
   formStep = '',
+  recaptcha = false,
   handleGoBackStep = f=>f,
 }) => {
 
@@ -81,7 +82,7 @@ const Footer = ({
         <>
           <Space size='small'>
             <Button className='footer__button--accept' type="primary" htmlType='button' onClick={handleGoBackStep}>Atrás</Button>
-            <Button className='footer__button--accept' type="primary" htmlType='submit'>Finalizar</Button>
+            {recaptcha && <Button className='footer__button--accept' type="primary" htmlType='submit'>Finalizar</Button>}
           </Space>
           <img className='footer__img' src={LogoRimac} alt='' height='34px' />
         </>

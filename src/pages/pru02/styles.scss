@@ -54,6 +54,9 @@
 .survey { 
   &__body {
     margin: 0 auto;
+    form {
+      padding-bottom: 40px;
+    }
   }
   
   .invalid-message {
@@ -74,6 +77,12 @@
 }
 
 
+::-webkit-scrollbar {
+  width: 10px;
+}
 
-
-
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: #888b8d;
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+}
