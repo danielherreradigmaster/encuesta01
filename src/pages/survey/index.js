@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { message } from 'antd';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -20,13 +19,16 @@ import Question8 from '../../components/survey/questions/question8';
 import ThankYou from '../../components/survey/thankYou';
 import SurveyFooter from '../../components/survey/footer';
 import useScrollToTop from '../../hooks/useScrollToTop';
+import useVariableVh from '../../hooks/useVariableVh';
+import Recaptcha from "../../components/recaptcha";
 import './styles.scss';
 
 const IndexPage2 = () => {
   const [formStep, setFormStep] = useState(1);
-  const [recaptcha, setRecaptcha] = useState(false);
+  const [captcha, setCaptcha] = useState(false);
   const [prueba, setPrueba] = useState(false);
   useScrollToTop(formStep);
+  useVariableVh();
   /* const {
     register,
     watch,
@@ -94,8 +96,8 @@ const IndexPage2 = () => {
 
   const forms = { 
     1: useForm(),
-    2: useForm({ resolver: yupResolver(termsSchema) }),
-    3: useForm({ resolver: yupResolver(personalDataSchema) }),
+    2: useForm({ resolver: yupResolver(personalDataSchema) }),
+    3: useForm({ resolver: yupResolver(termsSchema) }),
     4: useForm(),
     5: useForm({ resolver: yupResolver(question1Schema) }),
     6: useForm({ resolver: yupResolver(question2Schema) }),
@@ -117,14 +119,20 @@ const IndexPage2 = () => {
   };
 
   const onSubmit = (values, e) => {
-    console.log(JSON.stringify(values, null, 2));
     if(formStep === 1){
-      //information[1](data)
+      if(captcha.getValue()) {
+        handleNextStep();
+      } else {
+        message.destroy();
+        message.error({
+          content: 'Por favor, seleccione el captcha',
+          className: 'alert-error',
+        });
+      }
     }
-    else if(formStep === 2){
-      //account[1](data)
+    else if(formStep >= 2){ 
+      handleNextStep();
     }
-    handleNextStep();
   };
 
   const onError = (errors, e) => {
@@ -144,9 +152,9 @@ const IndexPage2 = () => {
       case 1:
         return {elem: <Welcome/>, formProps};
       case 2:
-        return {elem: <Terms {...formProps}/>, formProps};
-      case 3:
         return {elem: <PersonalData {...formProps}/>, formProps};
+      case 3:
+        return {elem: <Terms {...formProps}/>, formProps};
       case 4:
         return {elem: <EvaluationStart/>, formProps};
       case 5:
@@ -172,31 +180,16 @@ const IndexPage2 = () => {
     }
   };
 
-  const handleChange = (value) => {
-    setRecaptcha(_ => true);
-  };
-
-  useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }, []);
-
-
   return (
     <div className="survey">
       <div  className='survey__body'>
         <form onSubmit={getStepContent(formStep).formProps.handleSubmit(onSubmit, onError)}>
           {getStepContent(formStep).elem}
-          {formStep === 12 && 
-          <ReCAPTCHA
-            style={{ width: "300px", margin: "auto", paddingBottom: '34px' }}
-            theme="light"
-            size= "normal"
-            sitekey='6LcGcuUUAAAAAO1HI5FvaNDShKdNFKL7byWFtA_o'
-            onChange={handleChange}
-          />}
+          <Recaptcha
+            formStep={formStep}
+            setCaptcha={setCaptcha}
+          />
           <SurveyFooter 
-            recaptcha={recaptcha}
             formStep={formStep}
             handleGoBackStep={handleGoBackStep}
           />

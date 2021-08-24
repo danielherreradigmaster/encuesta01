@@ -1,4 +1,4 @@
-import Prueba02 from './pages/pru02';
+import Prueba02 from './pages/survey';
 
 function App() {
   return (

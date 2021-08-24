@@ -1,9 +1,9 @@
-import Wrapper2 from './wrapper2';
+import Wrapper from './wrapper';
 import './styles.scss';
 
 const Question2 = ({ register, formState:{ errors } }) => {
   return (
-    <Wrapper2
+    <Wrapper
       title='Atributo 2: Descubriendo riesgos'
       description='Este atributo mide la calidad y cobertura de penetración de las actividades de evaluación de riesgos en la documentación de riesgos y oportunidades.'
       questionValue='¿Cuál es la opción que mejor se adapta a tu organización respecto a la adopción de una Gestión de Riesgos Empresarial​?'
@@ -32,7 +32,7 @@ const Question2 = ({ register, formState:{ errors } }) => {
         <input type="radio" id="someRadioId62" name="someGroupName2" value='someRadioId62' {...register('someGroupName2')}/>
         <label className='question__label' htmlFor="someRadioId62">f. Los responsables de cada área revisan y mejoran regularmente los indicadores de riesgo que se les adapta mejor. Una estructura de informes rutinaria y oportuna dirige los riesgos y las oportunidades a la alta dirección.</label>
       </div>
-    </Wrapper2>
+    </Wrapper>
   )
 };
 

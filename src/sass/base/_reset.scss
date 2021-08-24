@@ -16,3 +16,22 @@ body {
   min-height: calc(var(--vh, 1vh) * 100);
   background-color: #F8F5F6;
 }
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: #888b8d;
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+}
+
+/* andt */
+.alert-error {
+  .ant-message-notice-content {
+    background-color: rgb(255, 242, 240);
+    border: 1px solid rgb(255, 204, 199);
+  }
+}
