@@ -11,7 +11,7 @@ const Recaptcha = ({
       style={{ width: "300px", margin: "auto", paddingBottom: '34px' }}
       theme="light"
       size= "normal"
-      sitekey='6LcGcuUUAAAAAO1HI5FvaNDShKdNFKL7byWFtA_o'
+      sitekey='6LffRR4cAAAAAFI2Lda1sCM3WGp35fV3-Tz6_Laf'
     />
   )
 };
